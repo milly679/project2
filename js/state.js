@@ -6,15 +6,44 @@ export let state = {
   },
 };
 
+// ADD TASK
 export function addTask(column, task) {
   state.columns[column].push(task);
 }
 
-export function moveTask(taskId, fromCol, toCol) {
-  const task = state.columns[fromCol].find((t) => t.id === taskId);
+// DELETE TASK
+export function deleteTask(taskId) {
 
-  state.columns[fromCol] = state.columns[fromCol].filter(
-    (t) => t.id !== taskId,
-  );
-  state.columns[toCol].push(task);
+  Object.keys(state.columns).forEach(column => {
+
+    state.columns[column] =
+      state.columns[column].filter(
+        task => task.id !== taskId
+      );
+
+  });
+
+}
+
+// MOVE TASK
+export function moveTask(
+  taskId,
+  fromColumn,
+  toColumn
+) {
+
+  const task =
+    state.columns[fromColumn].find(
+      task => task.id === taskId
+    );
+
+  if (!task) return;
+
+  state.columns[fromColumn] =
+    state.columns[fromColumn].filter(
+      task => task.id !== taskId
+    );
+
+  state.columns[toColumn].push(task);
+
 }

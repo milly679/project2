@@ -1,10 +1,28 @@
 import { renderTask } from "./task.js";
 
-export function renderColumn(id, title, tasks) {
+export function renderColumn(
+  title,
+  columnKey,
+  tasks
+) {
+
   return `
-    <div class="column" data-column="${id}">
-      <h3>${title}</h3>
-      ${tasks.map(renderTask).join("")}
-    </div>
+  
+    <section
+      class="column"
+      data-column="${columnKey}"
+    >
+
+      <h2>${title}</h2>
+
+      <div class="task-list">
+
+        ${tasks.map(renderTask).join("")}
+
+      </div>
+
+    </section>
+  
   `;
+
 }

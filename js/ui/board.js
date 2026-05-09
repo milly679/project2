@@ -1,9 +1,30 @@
-import { renderColumn } from "./column.js";
+import { state } from "../state.js";
 
-export function renderBoard(state) {
+import { renderColumn }
+from "./column.js";
+
+export function renderBoard() {
+
   return `
-    ${renderColumn("todo", "To Do", state.columns.todo)}
-    ${renderColumn("doing", "In Progress", state.columns.doing)}
-    ${renderColumn("done", "Done", state.columns.done)}
+  
+    ${renderColumn(
+      "To Do",
+      "todo",
+      state.columns.todo
+    )}
+
+    ${renderColumn(
+      "In Progress",
+      "doing",
+      state.columns.doing
+    )}
+
+    ${renderColumn(
+      "Done",
+      "done",
+      state.columns.done
+    )}
+  
   `;
+
 }
